@@ -1,0 +1,15 @@
+.auth-page {
+  max-width: 100%;
+  height: 100%;
+  background-image: url("/assets/logo-svg/cafe-main-logo.svg");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: var(--color5);
+}
+
+@media (max-width: 430px) {
+  .auth-page {
+
+  }
+}

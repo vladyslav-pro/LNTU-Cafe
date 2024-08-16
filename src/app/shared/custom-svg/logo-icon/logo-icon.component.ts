@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IconOptions, MatIcon, MatIconRegistry } from '@angular/material/icon';
+import {IconOptions, MatIcon, MatIconModule, MatIconRegistry} from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ICON_LOGO } from '../svg-constants';
 
@@ -7,7 +7,8 @@ import { ICON_LOGO } from '../svg-constants';
   selector: 'logo-icon',
   standalone: true,
   imports: [
-    MatIcon
+    MatIcon,
+    MatIconModule
   ],
   templateUrl: './logo-icon.component.html',
   styleUrl: './logo-icon.component.scss'

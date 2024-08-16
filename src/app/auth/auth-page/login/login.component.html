@@ -1,1 +1,30 @@
-<p>login works!</p>
+<div class="login-page">
+  <div class="login-page__form-group">
+    <h1>Сторінка авторизації користувача</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-page__form">
+      <div class="login-page__form__input">
+        <input  placeholder="E-mail: lntu.email@com" [formControlName]="'email'" type="email">
+        <input minlength="8" placeholder="type password" [formControlName]="'password'" type="password">
+      </div>
+      <a
+        mat-button
+        type="submit"
+        [disabled]="loginForm.invalid"
+        routerLink="/main"
+        routerLinkActive="active"
+        [class]="loginForm.invalid ? 'login-page__button-disabled' : 'login-page__button'"
+      >
+        <span >Вхід</span>
+        <logo-icon></logo-icon>
+      </a>
+    </form>
+    <a
+      mat-button
+      class="login-page__button"
+      routerLink="../registration"
+      routerLinkActive="active">
+      <span >Реєстрація</span>
+      <logo-icon></logo-icon>
+    </a>
+  </div>
+</div>
