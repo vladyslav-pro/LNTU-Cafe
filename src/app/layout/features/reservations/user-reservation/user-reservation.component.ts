@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-user-reservation',
@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './user-reservation.component.scss'
 })
 export class UserReservationComponent {
+
+
 
 }

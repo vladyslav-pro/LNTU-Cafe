@@ -1,0 +1,50 @@
+ul {
+  list-style-type: none;
+  margin-top: 100px;
+  li {
+    margin-bottom: 30px;
+    width: 285px;
+    height: 60px;
+
+    a {
+      color: var(--color0);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      border-radius: 15px;
+      text-decoration: none;
+      background-color: var(--color7);
+      cursor: pointer;
+      padding: 20px ;
+
+      mat-icon {
+        font-size: 15px;
+        width: 15px;
+        height: 15px;
+      }
+      &:hover, &:focus {
+        background-color: var(--color6);
+
+        span {
+          font-weight: 500;
+        }
+
+        mat-icon {
+          transform: scale(2);
+        }
+      }
+    }
+
+  }
+}
+
+.mat-badge-content {
+  background-color: var(--color0);
+  color: var(--color1);
+  border-radius: 50%;
+  width: 25px !important;
+  height: 25px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

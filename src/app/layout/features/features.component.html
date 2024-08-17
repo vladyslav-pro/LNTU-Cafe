@@ -1,0 +1,66 @@
+<div class="nav-bar">
+  <ul>
+    <!--      @if (user === "ADMIN") {-->
+    <li routerLinkActive matBadge="4" [matBadgeOverlap]="badgeOverlap">
+      <a routerLink="active-reservation" >
+        <span>Активні бронювання</span>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="routing arrow"
+          fontIcon="arrow_forward_ios"
+        ></mat-icon>
+      </a>
+    </li>
+    <!--      }-->
+
+    <!--      @if (user === "USER" ) {-->
+    <li routerLinkActive="active">
+      <a routerLink="user-profile">
+        <span>Мої дані</span>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="routing arrow"
+          fontIcon="arrow_forward_ios">
+        </mat-icon>
+      </a>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLink="./maps-of-table">
+        <span>Карта залу</span>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="routing arrow"
+          fontIcon="arrow_forward_ios">
+        </mat-icon>
+      </a>
+    </li>
+    <li routerLinkActive="active" matBadge="4" [matBadgeOverlap]="badgeOverlap">
+      <a routerLink="user-reservation">
+        <span>Мої бронювання</span>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="routing arrow"
+          fontIcon="arrow_forward_ios">
+        </mat-icon>
+      </a>
+    </li>
+
+    <li routerLinkActive="active" [matBadge]="requestReservation" [matBadgeOverlap]="badgeOverlap">
+      <a routerLink="request-reservation">
+        <span>Запити бронювання</span>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="routing arrow"
+          fontIcon="arrow_forward_ios">
+        </mat-icon>
+      </a>
+    </li>
+    <!--      }-->
+    <li>
+      <a (click)="logout()">
+        <span>logout</span>
+      </a>
+    </li>
+
+  </ul>
+</div>

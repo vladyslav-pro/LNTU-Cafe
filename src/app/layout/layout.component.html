@@ -1,1 +1,33 @@
-<p>layout works!</p>
+<div class="layout-page">
+  <header class="layout-page__header">
+    <div class="layout-page__title">
+      <h1>
+        <!--        TODO will be added interpolation for feature name -->
+        Feature  title
+      </h1>
+    </div>
+    <div class="layout-page__user-profile">
+      <a routerLink="/user-profile" routerLinkActive="selected" >
+<!--        TODO will be added binding for user photo-->
+        <img src="https://i.pinimg.com/originals/ba/92/7f/ba927ff34cd961ce2c184d47e8ead9f6.jpg" alt="user" />
+      </a>
+    </div>
+  </header>
+
+  <aside class="layout-page__sidebar">
+    <div class="sidebar__logo">
+      <div class="sidebar__logo-img">
+        <div class="sidebar__img-icon">
+          <img ngSrc="/assets/logo-svg/cafe-small-logo.svg" alt="Icon" height="60" width="65">
+        </div>
+
+      </div>
+      <div class="sidebar__logo-text">
+        <span>луцький національний технічний університет</span>
+      </div>
+    </div>
+      <features></features>
+  </aside>
+
+  <router-outlet/>
+</div>
