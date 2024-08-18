@@ -1,1 +1,9 @@
-<p>user-reservation works!</p>
+<div class="my-reservation">
+<!--  <h2>Мої бронювання</h2>-->
+  <div class="my-reservation__list">
+    @for (item of activeTable; track item) {
+      <reservation-item [tableItem]="item" [myReservationTab]="userAsUSer"></reservation-item>
+    }
+  </div>
+
+</div>

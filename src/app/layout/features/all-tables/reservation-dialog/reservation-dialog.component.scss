@@ -1,0 +1,62 @@
+.reservation-dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.reservation-dialog__title {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: "Roboto Regular";
+  color: var(--color1);
+  margin: 15px auto;
+}
+
+.reservation-dialog__table-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color1);
+  margin: 20px auto;
+}
+
+.reservation-dialog__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+
+  mat-form-field{
+    width:60vh;
+    margin-bottom: 10px;
+  }
+}
+
+.reservation-dialog__form__submit-button {
+  width: 370px;
+  height: 70px;
+  border-radius: 15px;
+}
+.mat-mdc-unelevated-button:not(:disabled) {
+  background-color: var(--color1);
+  color: var(--color0);
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: var(--color0);
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  color: var(--color1);
+}
+.mdc-text-field--focused {
+  background-color: var(--color1);
+  &:focus-within {
+    border-bottom: none;
+  }
+}
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 45px;
+}
+

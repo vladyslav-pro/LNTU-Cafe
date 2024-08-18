@@ -1,1 +1,8 @@
-<p>request-reservation works!</p>
+<div class="request-reservation">
+<!--  <h2>Запит на бронювання</h2>-->
+  <div class="request-reservation__list">
+    @for (item of activeTable; track item) {
+      <reservation-item [tableItem]="item" [requestReservationTab]="userAsUser"></reservation-item>
+    }
+  </div>
+</div>

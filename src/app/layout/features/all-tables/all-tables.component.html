@@ -1,1 +1,24 @@
-<p>all-tables works!</p>
+<div class="table-map">
+    <div class="table-map__search">
+      <mat-form-field appearance="outline" class="search__field">
+        <input
+          matInput
+          type="text"
+          placeholder="Введіть номер столу"
+          [(ngModel)]="tableNumber"
+          (input)="getTableNumber($event)" >
+        <mat-icon matPrefix fontIcon="search"></mat-icon>
+        @if(tableNumber) {
+          <button mat-icon-button aria-label="clear" matSuffix>
+            <mat-icon fontIcon="clear" (click)="onSearchClean()" ></mat-icon>
+          </button>
+        }
+      </mat-form-field>
+    </div>
+
+  <div class="table-map__list">
+        @for (item of tableList| searchTable: tableNumber; track item) {
+          <table-item-component [tableInformation]="item" ></table-item-component>
+        }
+  </div>
+</div>

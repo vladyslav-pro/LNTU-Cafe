@@ -48,5 +48,43 @@
 }
 
 @media screen and (max-width: 430px) {
+  .user-data__main {
+    width: 365px;
+    height: 600px;
+    border-radius: 45px;
+    box-shadow: 12px 11px 43.20000076293945px 0px #00000040;
+    display: flex;
+    align-items: unset;
+    flex-direction: column;
+    margin: 30px auto;
+  }
 
+  .data-logo {
+    width: 200px;
+    height: 200px;
+    border-radius: 45px;
+    background-color: var(--color1);
+    margin: 0 auto;
+  }
+
+  .data-information {
+    width: 300px;
+    height: 280px;
+    margin: 0 auto;
+
+    div {
+      color: var(--color1);
+    }
+  }
+
+  .data-information__label {
+    display: inline-block;
+    width: 100px;
+    text-transform: capitalize;
+
+  }
+
+  .label-space {
+    margin-bottom: 45px;
+  }
 }

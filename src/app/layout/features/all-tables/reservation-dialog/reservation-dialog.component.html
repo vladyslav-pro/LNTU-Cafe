@@ -1,1 +1,59 @@
-<p>reservation-dialog works!</p>
+<div class="reservation-dialog">
+  <h2 class="reservation-dialog__title">Бронювання столику</h2>
+  <div class="reservation-dialog__table-number">
+    <span>Столик {{tableNumber}}</span>
+  </div>
+  <form #reservationDialogForm="ngForm" (ngSubmit)="onSubmit()" class="reservation-dialog__form">
+    <mat-form-field >
+      <mat-label>Choose a date</mat-label>
+      <input
+        matInput
+        required
+        [matDatepicker]="picker"
+        [(ngModel)]="bookingDate"
+        name="date"
+        placeholder="Choose a date"
+      >
+      <!--        <mat-hint>MM/DD/YYYY</mat-hint>-->
+      <mat-datepicker-toggle matIconSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>event_available</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Choose a time</mat-label>
+      <input
+        matInput type="time"
+        [(ngModel)]="bookingTime"
+        required name="time"
+        min="09:00"
+        max="18:00"
+        placeholder="available time: 09:00 - 18:00"
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>booking duration</mat-label>
+      <mat-select required [(ngModel)]="bookingDurationValue" name="duration">
+        @for (item of bookingDuration; track item) {
+          <mat-option [value]="item">{{item}} min</mat-option>
+        }
+      </mat-select>
+
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>name of guests</mat-label>
+      <input matInput type="text" [(ngModel)]="guestName" required name="guest">
+    </mat-form-field>
+    <button
+      mat-flat-button
+      mat-dialog-close
+      type="submit"
+      [disabled]="!reservationDialogForm.form.valid"
+      class="reservation-dialog__form__submit-button"
+    >Забронювати</button>
+  </form>
+
+</div>
