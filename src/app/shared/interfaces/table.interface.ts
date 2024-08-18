@@ -4,6 +4,7 @@ export interface Tables {
   time_from?: string;
   time_to?: string;
   duration?: string;
+  date?: string;
 }
 
 export interface TableStatus extends Tables {

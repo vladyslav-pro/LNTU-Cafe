@@ -1,1 +1,35 @@
-<p>reservations works!</p>
+<div class="reservation-item">
+  <div class="reservation-item__icon">
+    <user-reservation-icon [state]="iconState"></user-reservation-icon>
+    <span> Table {{tableItem?.tableNumber}}</span>
+  </div>
+  <div class="reservation-item__information">
+    <div class="reservation-item__information__date general-item-style">
+      <!--      TODO changed style-->
+      <span class="reservation-item__information__date-date"> booking date {{tableItem?.date}}</span>
+      <span class="reservation-item__information__text"> booking period {{tableItem?.duration}}</span>
+    </div>
+    <div class="reservation-item__information__main-user general-item-style">
+      <span class="reservation-item__information__text">Гість 1</span>
+      <span class="reservation-item__information__text">  {{tableItem?.mainUser}}</span>
+    </div>
+    <div class="reservation-item__information__requested-user general-item-style">
+      <span class="reservation-item__information__text">Гість 2</span>
+      <span class="reservation-item__information__text"> {{tableItem?.requestedUser}}</span>
+    </div>
+    <div class="reservation-item__buttons">
+      @if (activeReservationTab) {
+        <button mat-button class="reservation-item__button" (click)="canselMeeting()">Скасувати зустріч</button>
+      } @else if (myReservationTab) {
+        <button mat-button [class]="{
+        'reservation-item__button-pending': tableItem?.requestedUserState === 'PENDING',
+        'reservation-item__button-accepted': tableItem?.requestedUserState === 'ACCEPTED'}"
+        >{{tableItem?.requestedUserState || 'pending' | titlecase}}</button>
+        <button mat-button class="reservation-item__button" (click)="canselMeeting()">Скасувати зустріч</button>
+      } @else if (requestReservationTab) {
+        <button mat-button class="reservation-item__button" (click)="acceptMeeting()" >Прийняти зустріч</button>
+        <button mat-button class="reservation-item__button" (click)="canselMeeting()">Скасувати зустріч</button>
+      }
+    </div>
+  </div>
+</div>

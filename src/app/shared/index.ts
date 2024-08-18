@@ -4,3 +4,5 @@ export * from './custom-svg/user-reservation-icon/user-reservation-icon.componen
 export * from './interfaces/table.interface';
 export * from './interfaces/user-data.interface';
 export * from './pipes/search-table.pipe';
+
+export * from './mocs/table-mock';

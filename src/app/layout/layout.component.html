@@ -1,5 +1,12 @@
 <div class="layout-page">
   <header class="layout-page__header">
+    <button class="header__show-sidebar">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="routing arrow"
+        fontIcon="arrow_back_ios_new"
+      ></mat-icon>
+    </button>
     <div class="layout-page__title">
       <h1>
         <!--        TODO will be added interpolation for feature name -->
@@ -7,8 +14,8 @@
       </h1>
     </div>
     <div class="layout-page__user-profile">
-      <a routerLink="/user-profile" routerLinkActive="selected" >
-<!--        TODO will be added binding for user photo-->
+      <a routerLink="./user-profile" routerLinkActive="selected" >
+<!--        TODO will be added binding for real user photo-->
         <img src="https://i.pinimg.com/originals/ba/92/7f/ba927ff34cd961ce2c184d47e8ead9f6.jpg" alt="user" />
       </a>
     </div>
@@ -29,5 +36,8 @@
       <features></features>
   </aside>
 
-  <router-outlet/>
+  <div class="layout-page__content">
+    <router-outlet/>
+  </div>
+
 </div>

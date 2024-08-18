@@ -1,1 +1,27 @@
-<p>user-profile works!</p>
+<div class="user-data__header">
+<!--  <p>Мої дані</p>-->
+</div>
+<div class="user-data__main">
+  <div class="data-logo">
+    <!--TODO set api for gravatar here-->
+  </div>
+  <div class="data-information">
+    <div>
+      <span class="data-information__label label-space">Ім’я</span>
+      <span>{{userData.firstName}}</span>
+    </div>
+    <div>
+      <span class="data-information__label label-space">Прізвище</span>
+      <span>{{userData.lastName}}</span>
+    </div>
+    <div>
+      <span class="data-information__label label-space">Телефон</span>
+      <span>{{userData.phoneNumber}}</span>
+    </div>
+    <div>
+      <span class="data-information__label">E-mail</span>
+      <span>{{userData.email}}</span>
+    </div>
+  </div>
+
+</div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {RouterOutlet} from "@angular/router";
+import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {FeaturesComponent} from "./features/features.component";
 import {NgOptimizedImage} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
@@ -11,7 +11,9 @@ import {MatIcon} from "@angular/material/icon";
     RouterOutlet,
     FeaturesComponent,
     NgOptimizedImage,
-    MatIcon
+    MatIcon,
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'

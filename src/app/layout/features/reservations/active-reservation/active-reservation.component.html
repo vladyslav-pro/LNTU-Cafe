@@ -1,1 +1,26 @@
-<p>active-reservation works!</p>
+<div class="active-reservation">
+<!--  <h2> Активні бронювання</h2>-->
+  <div class="active-reservation__search">
+    <mat-form-field appearance="outline" class="search__field">
+        <input
+          matInput
+          type="text"
+          placeholder="Введіть номер столу"
+          [(ngModel)]="tableNumber"
+          (input)="getTableNumber($event)" >
+      <mat-icon matPrefix fontIcon="search"></mat-icon>
+      @if(tableNumber) {
+        <button mat-icon-button aria-label="clear" matSuffix>
+          <mat-icon fontIcon="clear" (click)="onSearchClean()" ></mat-icon>
+        </button>
+      }
+    </mat-form-field>
+  </div>
+
+  <div class="active-reservation__list">
+    @for (item of activeTable | searchTable: tableNumber; track item.tableNumber) {
+      <reservation-item [tableItem]="item" [activeReservationTab]="userAdmin"></reservation-item>
+    }
+  </div>
+
+</div>

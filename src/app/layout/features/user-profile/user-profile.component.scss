@@ -1,0 +1,52 @@
+.user-data__header {
+  margin-top: 100px; // can be removed later
+  display: flex;
+  justify-content: center;
+
+  p {
+    font-size: 32px;
+    line-height: 22px;
+    font-weight: 700;
+    color: var(--color1);
+  }
+}
+.user-data__main {
+  width: 920px;
+  height: 560px;
+  border-radius: 45px;
+  box-shadow: 12px 11px 43.20000076293945px 0px #00000040;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 50px auto;
+}
+
+.data-logo {
+  width: 280px;
+  height: 280px;
+  border-radius: 45px;
+  background-color: var(--color1);
+}
+
+.data-information {
+  width: 400px;
+  height: 280px;
+
+  div {
+    color: var(--color1);
+  }
+}
+
+.data-information__label {
+  display: inline-block;
+  width: 115px;
+  text-transform: capitalize;
+}
+
+.label-space {
+  margin-bottom: 68px;
+}
+
+@media screen and (max-width: 430px) {
+
+}

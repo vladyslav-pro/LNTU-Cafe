@@ -1,25 +1,20 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import {TableStatus} from "../interfaces/table.interface";
 
 @Pipe({
-  name: 'searchTablePipe',
+  name: 'searchTable',
   standalone: true
 })
 export class SearchTablePipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-
-    /*
-    transform(cocktails: CocktailModel[], cocktailName: string): CocktailModel[] {
-    if (cocktailName === '') {
-      return cocktails;
+    transform(tables: TableStatus[], tableNumber: string): TableStatus[] {
+    if (tableNumber === '') {
+      return tables;
     }
 
-    return cocktails.filter(cocktail => {
-      return cocktail.name.toLowerCase().includes(cocktailName.toLowerCase());
+    return tables.filter(t => {
+      return t.tableNumber.includes(tableNumber);
     });
-
-     */
-    return null;
   }
 
 }
