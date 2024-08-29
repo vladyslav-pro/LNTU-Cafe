@@ -28,11 +28,24 @@
   flex-direction: column;
   align-items: center;
 
+  .form__control {
+    height: 90px;
+    //margin-bottom: 30px;
+  }
+
+  .form__control-passwords {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 150px;
+    margin-bottom: 25px;
+  }
+
   input {
     width: 600px;
-    height: 65px;
+    height: 60px;
     background-color: var(--color4);
-    margin-bottom: 30px;
     border-radius: 15px;
     color: var(--color0);
     font-size: 20px;
@@ -45,7 +58,14 @@
 
     &:focus {
       outline: 2px solid var(--color1);
+      color: var(--color1) ;
     }
+  }
+
+  .form__error {
+    color: var(--color11);
+    font-size: 15px;
+    font-weight: 500;
   }
 }
 
@@ -77,8 +97,15 @@
   justify-content: center;
   align-items: center;
   cursor: not-allowed;
+
+
 }
 
+.mdc-button.mdc-button__label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .registration-page__close {
   margin: 15px 15px 0px auto;
   width: 45px;

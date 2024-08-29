@@ -14,17 +14,17 @@ import {MatIconButton} from "@angular/material/button";
   standalone: true,
   imports: [
     CommonModule,
-    MatLabel,
+    MatLabel, //
     MatPrefix,
     MatSuffix,
     ReactiveFormsModule,
-    MatIcon,
-    FormsModule,
+    MatIcon, //
+    FormsModule, //
     ReservationsComponent,
     SearchTablePipe,
-    MatIconButton,
-    MatFormField,
-    MatInput,
+    MatIconButton, //
+    MatFormField, //
+    MatInput, //
   ],
   templateUrl: './active-reservation.component.html',
   styleUrl: './active-reservation.component.scss',

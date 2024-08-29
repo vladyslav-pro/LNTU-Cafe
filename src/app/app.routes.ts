@@ -11,5 +11,9 @@ export const routes: Routes = [
     path: 'main',
     loadChildren: () => import('../app/layout/index')
       .then(r => r.routes)
+  },
+  {
+    path: '**',
+    loadComponent: () => import('../app/auth/auth-page/login/login.component').then(m => m.LoginComponent)
   }
 ];

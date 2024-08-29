@@ -1,4 +1,4 @@
-import {Component, inject, Input} from '@angular/core';
+import {Component, inject, Input, OnInit, ViewContainerRef} from '@angular/core';
 import {TableStatus, UserReservationIconComponent} from "../../../../shared";
 import {MatButton, MatButtonModule} from "@angular/material/button";
 import {CommonModule, TitleCasePipe} from "@angular/common";
@@ -17,8 +17,9 @@ import {ReservationDialogService} from "../reservation-dialog/reservation-dialog
   templateUrl: './table-component.component.html',
   styleUrl: './table-component.component.scss'
 })
-export class TableComponentComponent {
+export class TableComponentComponent implements OnInit{
   @Input() tableInformation: TableStatus | undefined ;
+  viewContainer = inject(ViewContainerRef);
 
   private reservationDialogService = inject(ReservationDialogService)
 
@@ -40,7 +41,8 @@ export class TableComponentComponent {
   }
 
   public showReservationDialog() {
-    this.reservationDialogService.openDialog()
+    console.log(this.viewContainer)
+    this.reservationDialogService.openDialog(this.viewContainer,this.tableInformation)
   }
 
 }

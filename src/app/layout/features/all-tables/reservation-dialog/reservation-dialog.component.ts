@@ -1,13 +1,13 @@
-import {ChangeDetectionStrategy, Component, ElementRef, inject, Inject} from '@angular/core';
-import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {ChangeDetectionStrategy, Component, inject, viewChild, ViewEncapsulation} from '@angular/core';
+import {MatFormField, MatHint, MatLabel, MatSuffix} from "@angular/material/form-field";
 import {
   MatDatepicker,
   MatDatepickerInput,
   MatDatepickerModule,
-  MatDatepickerToggle
+  MatDatepickerToggle, MatDatepickerToggleIcon
 } from "@angular/material/datepicker";
-import {FormsModule} from "@angular/forms";
-import {MatIcon} from "@angular/material/icon";
+import {FormsModule, NgForm} from "@angular/forms";
+import {MatIcon, MatIconModule} from "@angular/material/icon";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {
   MAT_DIALOG_DATA, MatDialogActions,
@@ -19,6 +19,8 @@ import {
 import {MatButton} from "@angular/material/button";
 import {MatInput} from "@angular/material/input";
 import {provideNativeDateAdapter} from "@angular/material/core";
+import {CalendarIconComponent} from "../../../../shared";
+import {MatTooltip} from "@angular/material/tooltip";
 
 class DialogData {
 }
@@ -27,47 +29,63 @@ class DialogData {
   selector: 'reservation-dialog',
   standalone: true,
   imports: [
+    FormsModule,
     MatFormField,
     MatDatepickerInput,
-    FormsModule,
     MatDatepickerToggle,
     MatIcon,
     MatDatepicker,
+    MatInput,
     MatSelect,
     MatOption,
     MatButton,
     MatDialogClose,
-    MatInput,
     MatLabel,
-    MatDialogTitle,
+    MatHint,
+    MatSuffix,
+    MatDatepickerToggleIcon,
+    CalendarIconComponent,
+    MatTooltip,
+    MatIconModule,
     MatDialogContent,
-    MatDialogActions,
-    MatDialogClose,
-    MatDatepickerModule
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './reservation-dialog.component.html',
   styleUrl: './reservation-dialog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class ReservationDialogComponent {
   public data = inject(MAT_DIALOG_DATA);
   dialogRef = inject(MatDialogRef<ReservationDialogComponent>);
+  private form = viewChild.required<NgForm>('reservationDialogForm');
 
-  tableNumber: number = 1;
-  bookingTime: string = '';
+  tableNumber: number;
+  bookingTime: string[] = [ '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00'];
+  bookingTimeValue!: string;
   bookingDate: string = '';
   bookingDuration: number[] = [30,60,90];
   bookingDurationValue!: number;
   guestName: string = '';
+  minDate: Date;
 
-  constructor(
-    // private elementRef: ElementRef,
-    // public dialogRef: MatDialogRef<ReservationDialogComponent>,
-    // @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
+  constructor() {
     console.log('data', this.data)
+    this.tableNumber = this.data.tableNumber;
+    this.minDate = new Date();
   }
 
-  onSubmit(){}
+  onSubmit(formData: NgForm) {
+    if(formData.form.invalid) {
+      return;
+    }
+    console.log('form', formData.form.value);
+    formData.reset();
+    this.closeDialog();
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
+  }
+
 }

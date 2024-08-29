@@ -9,13 +9,71 @@
     @if (userRegistered) {
       <h1>Сторінка реєстрації користувача</h1>
       <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="registration-page__form">
-        <input type="text" placeholder="Ім'я" [formControlName]="'firstName'">
-        <input type="text" placeholder="Прізвище" [formControlName]="'lastName'">
-        <input type="email" placeholder="E-mail: lntu.email@com" [formControlName]="'email'">
-        <input type="password" placeholder="Пароль: 8-16 символів " [formControlName]="'password'">
-        <input type="phone" placeholder="Телефон: +380000000000" [formControlName]="'phone'">
+        <div class="form__control">
+          <input type="text" placeholder="Ім'я" formControlName="firstName">
+          @if (
+            registrationForm.get('firstName')?.invalid &&
+            registrationForm.get('firstName')?.touched
+            ) {
+            @for (error of registrationForm.controls.firstName.errors | keyvalue; track $index) {
+              <div class="form__error">{{ error.value}}</div>
+            }
+          }
+        </div>
+
+        <div class="form__control">
+          <input type="text" placeholder="Прізвище" formControlName="lastName">
+          @if (
+            registrationForm.get('lastName')?.invalid &&
+            registrationForm.get('lastName')?.touched
+            ) {
+            @for (error of registrationForm.controls.lastName.errors | keyvalue; track $index) {
+              <div class="form__error">{{ error.value}}</div>
+            }
+          }
+        </div>
+
+        <div class="form__control">
+          <input type="email" placeholder="E-mail: your.email@lntu.edu.ua" formControlName="email">
+          @if (
+            registrationForm.get('email')?.invalid &&
+            registrationForm.get('email')?.touched
+            ) {
+            @for (error of registrationForm.controls.email.errors | keyvalue; track $index) {
+              <div class="form__error">{{ error.value}}</div>
+            }
+          }
+        </div>
+
+        <div class="form__control-passwords" formGroupName="passwords">
+          <input type="password" placeholder="Пароль: 8-16 символів" formControlName="password">
+          @if (
+            registrationForm.controls.passwords.get('password')?.invalid &&
+            registrationForm.controls.passwords.get('password')?.touched
+            ) {
+            @for (error of registrationForm.controls.passwords.controls.password.errors | keyvalue; track $index) {
+              <div class="form__error">{{ error.value}}</div>
+            }
+          }
+          <input type="password" placeholder="Підтвердіть Пароль" formControlName="confirmPassword">
+          @if (
+            registrationForm.controls.passwords.get('confirmPassword')?.invalid &&
+            registrationForm.controls.passwords.get('confirmPassword')?.touched
+            ) {
+            @for (error of registrationForm.controls.passwords.controls.password.errors | keyvalue; track $index) {
+              <div class="form__error">{{ error.value}}</div>
+            }
+          }
+          @if (registrationForm.controls.passwords.errors?.['passwordsNotEqual']) {
+            <div class="form__error">Паролі не співпадають</div>
+          }
+        </div>
+
+        <div class="form__control">
+          <input type="text" placeholder="Телефон: 0776669922" formControlName="phone">
+        </div>
+
         <button
-          mat-button
           type="submit"
           [disabled]="registrationForm.invalid"
           [class]="registrationForm.invalid ? 'registration-page__form__button-disabled' : 'registration-page__form__button'"
@@ -25,16 +83,17 @@
         </button>
       </form>
     }
-    @if (!userRegistered) {
-      <div class="registration-page__success">
-        <h2>Ви успішно зареєструвались!</h2>
-        <button
-          mat-button
-          (click)="onLoginReturn()"
-        > <span>Повернутись на сторінку авторизації</span>
-          <logo-icon></logo-icon>
-        </button>
-      </div>
-    }
   </div>
 </div>
+
+<!--    @if (!userRegistered) {-->
+<!--      <div class="registration-page__success">-->
+<!--        <h2>Ви успішно зареєструвались!</h2>-->
+<!--        <button-->
+<!--          mat-button-->
+<!--          (click)="onLoginReturn()"-->
+<!--        > <span>Повернутись на сторінку авторизації</span>-->
+<!--          <logo-icon></logo-icon>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    }-->

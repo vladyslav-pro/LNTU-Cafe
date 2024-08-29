@@ -8,8 +8,10 @@ export class ReservationDialogService {
   public openDialog(viewContainerRef?: ViewContainerRef, data?: any) {
     const dialogRef = this.dialog.open(ReservationDialogComponent, {
       viewContainerRef: viewContainerRef,
-      width: '900px',
-      height: '600px',
+      maxWidth: '900px',
+      minWidth: '385px',
+      minHeight: '600px',
+      maxHeight: '725px',
       data: data
     });
     return dialogRef.afterClosed().subscribe(result => {
