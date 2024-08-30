@@ -28,17 +28,15 @@
 
 
       </div>
-      <a
+      <button
         mat-button
         type="submit"
         [disabled]="loginForm.invalid"
-        routerLink="/main"
-        routerLinkActive="active"
         [class]="loginForm.invalid ? 'login-page__button-disabled' : 'login-page__button'"
       >
         <span >Вхід</span>
         <logo-icon></logo-icon>
-      </a>
+      </button>
     </form>
     <a
       mat-button

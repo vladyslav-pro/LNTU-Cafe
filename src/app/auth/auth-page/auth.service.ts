@@ -1,13 +1,24 @@
 import {inject, Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {AuthUserData, RegistrationUser, UserData} from "../../shared";
-import {catchError, Observable, tap, throwError} from "rxjs";
+import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
   private http = inject(HttpClient);
 
+  private token: string = '';
+  userToken = new BehaviorSubject<string | null>(null);
+
   constructor() {
+    this.loadTokenFromStorage();
+  }
+
+  private loadTokenFromStorage() {
+    const token = localStorage.getItem('LNTU_authToken');
+    if (token) {
+      this.userToken.next(token);
+    }
   }
 
   public registrationUser(userData: RegistrationUser): Observable<any>{
@@ -16,7 +27,8 @@ export class AuthService {
       .pipe(
         catchError(this.handleError),
         tap(response => {
-          console.log(response);
+          // console.log('registration',response);
+          this.handleUserToken(response.token);
           localStorage.setItem('LNTU_authToken', response.token);
         })
       );
@@ -27,14 +39,25 @@ export class AuthService {
     return this.http.post<AuthUserData>(loginURL, {
       email: email,
       password: password,
-      returnSecureToken: true
     })
       .pipe(
         catchError(this.handleError),
         tap(response => {
-          localStorage.setItem('authToken', response.token);
+          // console.log('login',response);
+          this.handleUserToken(response.token);
+          localStorage.setItem('LNTU_authToken', response.token);
         })
       );
+  }
+
+  public logout() {
+    const logoutURL = 'http://www.lntu-tables.local/api/auth/logout';
+    localStorage.removeItem('LNTU_authToken');
+    return this.http.post(logoutURL, {})
+  }
+
+  handleUserToken(token: string) {
+    this.userToken.next(token);
   }
 
   private handleError(errorResponse: HttpErrorResponse) {

@@ -1,10 +1,11 @@
 import { Routes} from "@angular/router";
 import {LayoutComponent} from "./layout.component";
-import {AllTablesComponent} from "./features/all-tables/all-tables.component";
+import {authGuard} from "../auth/auth-page/auth.guard";
 
 export const routes: Routes = [{
     path: '',
     component: LayoutComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: 'request-reservation',

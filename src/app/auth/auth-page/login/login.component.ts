@@ -1,7 +1,7 @@
 import {Component, inject, ViewEncapsulation} from '@angular/core';
 import { LogoIconComponent } from '../../../shared';
 import { MatButton, MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import {AuthService} from "../auth.service";
 import {KeyValuePipe} from "@angular/common";
@@ -17,7 +17,8 @@ import {take} from "rxjs";
     MatButtonModule,
     RouterLink,
     LogoIconComponent,
-    KeyValuePipe
+    KeyValuePipe,
+    RouterLinkActive
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -25,9 +26,10 @@ import {take} from "rxjs";
 })
 export class LoginComponent {
   private authService = inject(AuthService);
+  private router = inject(Router);
 
   loginForm = new FormGroup({
-    email : new FormControl('', [Validators.required, Validators.email, lntuEmailValidator()]),
+    email : new FormControl('', [Validators.required, lntuEmailValidator()]),
     password : new FormControl('', [Validators.required, passwordValidator()])
   });
 
@@ -36,6 +38,11 @@ export class LoginComponent {
     this.authService.loginUser(this.loginForm.value.email!, this.loginForm.value.password!)
       .pipe(
         take(1)
-      ).subscribe();
+      ).subscribe(
+        resdata => {
+          console.log(resdata);
+          this.router.navigate(['/main']);
+        }
+    );
   }
 }
