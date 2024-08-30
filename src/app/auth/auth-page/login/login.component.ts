@@ -1,8 +1,12 @@
-import { Component, ViewEncapsulation} from '@angular/core';
+import {Component, inject, ViewEncapsulation} from '@angular/core';
 import { LogoIconComponent } from '../../../shared';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {AuthService} from "../auth.service";
+import {KeyValuePipe} from "@angular/common";
+import {lntuEmailValidator, passwordValidator} from "../auth.validations";
+import {take} from "rxjs";
 
 @Component({
   selector: 'login-page',
@@ -12,20 +16,26 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
     MatButton,
     MatButtonModule,
     RouterLink,
-    LogoIconComponent
+    LogoIconComponent,
+    KeyValuePipe
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent {
+  private authService = inject(AuthService);
 
   loginForm = new FormGroup({
-    'email' : new FormControl('', [Validators.required, Validators.email]),
-    'password' : new FormControl('', [Validators.required, Validators.minLength(8),Validators.maxLength(16)])
+    email : new FormControl('', [Validators.required, Validators.email, lntuEmailValidator()]),
+    password : new FormControl('', [Validators.required, passwordValidator()])
   });
 
   onSubmit() {
     console.log(this.loginForm.value);
+    this.authService.loginUser(this.loginForm.value.email!, this.loginForm.value.password!)
+      .pipe(
+        take(1)
+      ).subscribe();
   }
 }

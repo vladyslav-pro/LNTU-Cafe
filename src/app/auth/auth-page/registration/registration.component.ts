@@ -34,7 +34,7 @@ import {take} from "rxjs";
 })
 export class RegistrationComponent {
   private authService = inject(AuthService);
-  userRegistered: boolean = true;
+  // userRegistered: boolean = true;
   registrationForm = new FormGroup({
     firstName : new FormControl('', [Validators.required,  firstNameValidator()]),
     lastName : new FormControl('', [Validators.required,  lastNameValidator()]),
@@ -53,7 +53,7 @@ export class RegistrationComponent {
 
   onSubmit() {
     console.log(this.registrationForm.value);
-    this.userRegistered = !this.userRegistered;
+    // this.userRegistered = !this.userRegistered;
       const registeredUser: RegistrationUser = {
         name: this.registrationForm.value.firstName!,
         last_name: this.registrationForm.value.lastName!,

@@ -5,5 +5,6 @@ export * from './custom-svg/calendar-icon/calendar-icon.component';
 export * from './interfaces/table.interface';
 export * from './interfaces/user-data.interface';
 export * from './pipes/search-table.pipe';
+export * from './wrong-way/wrong-way.component'
 
 export * from './mocs/table-mock';

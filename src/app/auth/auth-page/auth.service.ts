@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   public loginUser(email: string, password: string ) {
-    const loginURL = 'http://www.lntu-tables.local/api/login';
+    const loginURL = 'http://www.lntu-tables.local/api/auth/login';
     return this.http.post<AuthUserData>(loginURL, {
       email: email,
       password: password,

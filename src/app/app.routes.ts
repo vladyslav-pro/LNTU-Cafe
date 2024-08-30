@@ -14,6 +14,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    loadComponent: () => import('../app/auth/auth-page/login/login.component').then(m => m.LoginComponent)
+    loadComponent: () => import('../app/shared/wrong-way/wrong-way.component').then(c => c.WrongWayComponent)
   }
 ];
