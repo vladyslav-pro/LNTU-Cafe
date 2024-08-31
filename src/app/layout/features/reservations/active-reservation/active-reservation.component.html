@@ -18,9 +18,9 @@
   </div>
 
   <div class="active-reservation__list">
-    @for (item of activeTable | searchTable: tableNumber; track item.tableNumber) {
+    @for (item of activeTable ; track item.tableNumber) {
       <reservation-item [tableItem]="item" [activeReservationTab]="userAdmin"></reservation-item>
     }
   </div>
-
+<!--| searchTable: tableNumber-->
 </div>

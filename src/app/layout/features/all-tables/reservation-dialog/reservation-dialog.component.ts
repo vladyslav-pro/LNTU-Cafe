@@ -71,7 +71,7 @@ export class ReservationDialogComponent {
 
   constructor() {
     console.log('data', this.data)
-    this.tableNumber = this.data.tableNumber;
+    this.tableNumber = this.data.number;
     this.minDate = new Date();
   }
 

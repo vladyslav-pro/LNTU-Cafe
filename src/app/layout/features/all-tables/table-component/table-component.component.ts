@@ -1,5 +1,5 @@
-import {Component, inject, Input, OnInit, ViewContainerRef} from '@angular/core';
-import {TableStatus, UserReservationIconComponent} from "../../../../shared";
+import {Component, inject, input, Input, OnInit, ViewContainerRef} from '@angular/core';
+import {TablesInfo, TableStatus, UserReservationIconComponent} from "../../../../shared";
 import {MatButton, MatButtonModule} from "@angular/material/button";
 import {CommonModule, TitleCasePipe} from "@angular/common";
 import {ReservationDialogService} from "../reservation-dialog/reservation-dialog.service";
@@ -18,7 +18,7 @@ import {ReservationDialogService} from "../reservation-dialog/reservation-dialog
   styleUrl: './table-component.component.scss'
 })
 export class TableComponentComponent implements OnInit{
-  @Input() tableInformation: TableStatus | undefined ;
+   tableInformation = input.required<TablesInfo>();
   viewContainer = inject(ViewContainerRef);
 
   private reservationDialogService = inject(ReservationDialogService)
@@ -31,7 +31,7 @@ export class TableComponentComponent implements OnInit{
   }
 
   private setButtonLabel():void {
-    if (this.tableInformation?.state) {
+    if (this.tableInformation()?.state) {
       this.tableState = 'ЗАБРОНЬОВАНО';
       this.iconState = 'DISABLE';
     } else {
@@ -42,7 +42,7 @@ export class TableComponentComponent implements OnInit{
 
   public showReservationDialog() {
     console.log(this.viewContainer)
-    this.reservationDialogService.openDialog(this.viewContainer,this.tableInformation)
+    this.reservationDialogService.openDialog(this.viewContainer,this.tableInformation())
   }
 
 }

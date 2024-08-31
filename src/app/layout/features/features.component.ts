@@ -18,21 +18,16 @@ import {take} from "rxjs";
   styleUrl: './features.component.scss'
 })
 export class FeaturesComponent {
-  private destroyRef = inject(DestroyRef);
   private authService = inject(AuthService);
+
   public badgeOverlap: boolean = true;
   public user!: 'ADMIN' | 'USER'
   public requestReservation: number = 2;
-  constructor(
-    private router: Router
-  ) {
 
-  }
+  constructor() {}
 
   logout() {
-    this.router.navigate(['/auth/login']);
-    this.authService.logout()
-      .pipe(
+    this.authService.logout().pipe(
         take(1)
       )
       .subscribe();

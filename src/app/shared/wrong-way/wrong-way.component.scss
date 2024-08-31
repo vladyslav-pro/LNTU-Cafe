@@ -1,0 +1,36 @@
+.wrong-way-container {
+  background-color: var(--color6);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h1 {
+    color: var(--color1);
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  button {
+    background-color: var(--color1);
+    color: var(--color6);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+
+    a {
+      color: var(--color6);
+      text-decoration: none;
+    }
+
+    &:hover {
+      background-color: var(--color2);
+    }
+  }
+}

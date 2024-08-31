@@ -17,7 +17,7 @@
     </div>
 
   <div class="table-map__list">
-        @for (item of tableList| searchTable: tableNumber; track item) {
+        @for (item of tableList() | searchTable: tableNumber; track item) {
           <table-item-component [tableInformation]="item" ></table-item-component>
         }
   </div>

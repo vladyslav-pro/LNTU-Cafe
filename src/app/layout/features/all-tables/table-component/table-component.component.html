@@ -1,9 +1,9 @@
-<li [class]="tableInformation?.state ? 'table-item__disabled' :  'table-item__enabled'">
+<li [class]="tableInformation().state ? 'table-item__disabled' :  'table-item__enabled'">
   <div class="table-item__icon">
     <user-reservation-icon [state]="iconState"></user-reservation-icon>
   </div>
   <div class="table-item__number">
-    <span> Столик {{tableInformation?.tableNumber}}</span>
+    <span> Столик {{tableInformation().number}}</span>
   </div>
 
   <button mat-flat-button (click)="showReservationDialog()">

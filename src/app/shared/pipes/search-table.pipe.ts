@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {TableStatus} from "../interfaces/table.interface";
+import {TablesInfo, TableStatus} from "../interfaces/table.interface";
 
 @Pipe({
   name: 'searchTable',
@@ -7,13 +7,13 @@ import {TableStatus} from "../interfaces/table.interface";
 })
 export class SearchTablePipe implements PipeTransform {
 
-    transform(tables: TableStatus[], tableNumber: string): TableStatus[] {
+    transform(tables: TablesInfo[], tableNumber: string): TablesInfo[] {
     if (tableNumber === '') {
       return tables;
     }
 
     return tables.filter(t => {
-      return t.tableNumber.includes(tableNumber);
+      return t.number.includes(tableNumber);
     });
   }
 

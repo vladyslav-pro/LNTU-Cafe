@@ -1,10 +1,11 @@
 export interface UserData {
-  firstName: string;
-  lastName: string;
   email: string;
-  phoneNumber: string;
-  password?: string;
   id?: string;
+  image?: string;
+  last_name: string;
+  name: string;
+  phone_number: string;
+  role?: string;
 }
 
 export interface AuthUserData {

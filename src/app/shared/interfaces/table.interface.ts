@@ -7,6 +7,12 @@ export interface Tables {
   date?: string;
 }
 
+export interface TablesInfo {
+  id:  string;
+  number:  string;
+  state?: string;
+}
+
 export interface TableStatus extends Tables {
   mainUser: string;
   requestedUser: string;

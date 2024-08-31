@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {MatFormField, MatLabel, MatPrefix, MatSuffix} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
@@ -7,6 +7,7 @@ import {MatIconButton} from "@angular/material/button";
 import {SearchTablePipe, TABLE_MOCK, TableStatus} from "../../../shared";
 import {TableComponentComponent} from "./table-component/table-component.component";
 import {MatGridList, MatGridTile} from "@angular/material/grid-list";
+import {AllTablesService} from "./all-tables.service";
 
 @Component({
   selector: 'app-all-tables',
@@ -29,9 +30,15 @@ import {MatGridList, MatGridTile} from "@angular/material/grid-list";
   styleUrl: './all-tables.component.scss'
 })
 export class AllTablesComponent {
-  public tableList:TableStatus[]  = TABLE_MOCK;
+  private tablesService = inject(AllTablesService);
+  public tableList = this.tablesService.tablesInformation;
 
   public tableNumber:string ='';
+
+  constructor() {
+    this.tablesService.getAllTables()
+  }
+
 
   public getTableNumber(event: any) {
     console.log(event.data)
