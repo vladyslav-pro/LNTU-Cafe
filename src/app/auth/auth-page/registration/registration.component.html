@@ -6,7 +6,7 @@
       class="registration-page__close">
       <mat-icon fontIcon="close"></mat-icon>
     </button>
-<!--    @if (userRegistered) {-->
+    @if (userRegistered) {
       <h1>Сторінка реєстрації користувача</h1>
       <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="registration-page__form">
         <div class="form__control">
@@ -82,7 +82,18 @@
           <logo-icon></logo-icon>
         </button>
       </form>
-<!--    }-->
+    }
+        @if (!userRegistered) {
+          <div class="registration-page__success">
+            <h2>Ви успішно зареєструвались!</h2>
+            <button
+              mat-button
+              (click)="onLoginReturn()"
+            > <span>Повернутись на сторінку авторизації</span>
+              <logo-icon></logo-icon>
+            </button>
+          </div>
+        }
   </div>
 </div>
 

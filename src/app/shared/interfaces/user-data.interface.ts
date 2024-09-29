@@ -24,3 +24,10 @@ export interface RegistrationUser {
   password: string;
   password_confirmation: string;
 }
+
+export interface RequestedUser {
+  id: number;
+  full_name: string;
+  email: string;
+  avatar: string | null;
+}

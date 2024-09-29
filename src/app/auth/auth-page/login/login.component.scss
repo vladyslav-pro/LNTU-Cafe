@@ -121,11 +121,20 @@
   }
 
   .login-page__form__input {
+
+    .form__control {
+      height: 100px;
+    }
+    .form__error {
+      width: 300px;
+      font-size: 10px;
+    }
+
     input {
       width:300px;
       height: 60px;
       background-color: var(--color4);
-      margin-bottom: 25px;
+      margin-bottom: 5px;
       border-radius: 15px;
     }
   }

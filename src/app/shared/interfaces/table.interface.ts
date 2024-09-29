@@ -18,3 +18,10 @@ export interface TableStatus extends Tables {
   requestedUser: string;
   requestedUserState?: 'ACCEPTED' | 'PENDING' | 'DECLINE';
 }
+
+export interface BookTable {
+  guest_id: number;
+  data_picker: string;
+  time_picker: string;
+  duration: string;
+}
