@@ -9,8 +9,6 @@ import {BookTable} from "../../../../shared";
 export class ReservationDialogDataService {
   private http = inject(HttpClient);
 
-  constructor() {}
-
   getAvailableTimeslots(date: string, tableID: number): Observable<string[]> {
     const availableTimeSLotsURL = `http://www.lntu-tables.local/api/available-time/${tableID}`
     return this.http.post<string[]>(availableTimeSLotsURL, {"date_picker": date});
@@ -18,12 +16,11 @@ export class ReservationDialogDataService {
 
   getRequestedUser(searchString: string): Observable<any> {
     const searchUserURL = 'http://www.lntu-tables.local/api/users';
-    const params =new HttpParams().set('search', searchString);
+    const params = new HttpParams().set('search', searchString);
     return this.http.get<any>(searchUserURL, {params});
   }
 
   setBooking(data: BookTable, tableID: number): Observable<any> {
-    console.log('setBooking', data);
     const bookingURL = `http://www.lntu-tables.local/api/booked-tables/${tableID}`;
     return this.http.post<any>(bookingURL, data);
   }

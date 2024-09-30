@@ -3,7 +3,6 @@ import {
   Component, ElementRef,
   inject,
   ViewChild,
-  viewChild,
   ViewEncapsulation
 } from '@angular/core';
 import {MatFormField, MatHint, MatLabel, MatSuffix} from "@angular/material/form-field";
@@ -29,7 +28,6 @@ import {MatTooltip} from "@angular/material/tooltip";
 import {ReservationDialogDataService} from "./reservation-dialog-data.service";
 import {debounceTime, distinctUntilChanged, switchMap, take} from "rxjs";
 import {MatAutocomplete, MatAutocompleteTrigger} from "@angular/material/autocomplete";
-
 
 @Component({
   selector: 'reservation-dialog',

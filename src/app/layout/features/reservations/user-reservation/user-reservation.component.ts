@@ -1,6 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, DestroyRef, inject} from '@angular/core';
 import {ReservationsComponent} from "../reservation-item/reservation-item.component";
 import {TABLE_MOCK, TableStatus} from "../../../../shared";
+import {UserReservationService} from "./user-reservation.service";
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-user-reservation',
@@ -12,6 +14,8 @@ import {TABLE_MOCK, TableStatus} from "../../../../shared";
   styleUrl: './user-reservation.component.scss'
 })
 export class UserReservationComponent {
+  private destroyRef = inject(DestroyRef);
+  private userReservationService = inject(UserReservationService);
 
   protected readonly tableList = TABLE_MOCK;
   public activeTable: TableStatus[] = [];
@@ -19,6 +23,13 @@ export class UserReservationComponent {
 
   ngOnInit() {
     this.getBookedTable();
+    this.userReservationService.userReservation()
+      .pipe(
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe(item => {
+        console.log(item);
+      });
   }
 
   private getBookedTable(): void {
